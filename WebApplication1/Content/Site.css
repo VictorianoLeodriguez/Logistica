@@ -85,3 +85,34 @@ textarea {
         border-top: 5px solid #007bff;
     }
 }
+
+.dvContainer {
+    background: white;
+    padding: 15px;
+    margin: 0 10px 10px 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.dvContainerCad .table-responsive {
+    max-height: 80vh;
+}
+
+.dvContainerLi .table-responsive {
+    max-height: 80vh;
+}
+
+.dvCadHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+    .dvCadHeader button {
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+    }
+
+    .dvCadHeader input {
+        padding-right: 30px !important;
+    }
