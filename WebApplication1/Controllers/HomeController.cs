@@ -10,8 +10,18 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Login()
         {
+            //var usuario = UsuarioDB.ValidarLogin(model);
+
+            //if (usuario != null)
+            //{
+            //    Session["UsuarioLogado"] = usuario;
+            //    return RedirectToAction("Index", "Home");
+            //}
+
+            //ViewBag.Erro = "Login inválido";
             return View();
         }
+
 
         public ActionResult About()
         {
@@ -20,11 +30,10 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Logout()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
         }
     }
 }
