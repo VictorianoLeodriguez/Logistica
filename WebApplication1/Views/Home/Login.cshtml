@@ -1,1 +1,21 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // aponta pro layout
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container">
+    <div class="login-box">
+        <h2>Entrar</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" placeholder="Digite sua senha" required>
+            </div>
+            <button class="btn" type="submit">Login</button>
+        </form>
+    </div>
+</div>
