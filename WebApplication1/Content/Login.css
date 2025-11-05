@@ -1,0 +1,38 @@
+.login-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('/Content/BAA LOGISTICA.png') no-repeat center center;
+    background-size: cover;
+}
+
+.login-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 80px; 
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}

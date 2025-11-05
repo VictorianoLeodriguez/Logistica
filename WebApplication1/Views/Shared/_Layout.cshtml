@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="~/favicon.ico">
-    <title>KR Saúde</title>
+    <link rel="icon" href="~/Content/design.png">
+    <title>BAA LOGISTICA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -20,10 +20,7 @@
         <div id="bodyDiv">
             @RenderBody()
         </div>
-        <script>var urlFiliais = '@Url.Action("TrocarFilial", "Home")';var urlInicio = '@Url.Action("Inicio", "Home")';</script>
-        @Scripts.Render("~/bundles/selfilial")
     }
-    @Scripts.Render("~/bundles/general")
     @RenderSection("scripts", required: false)
 </body>
 </html>

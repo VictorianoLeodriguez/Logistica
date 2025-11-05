@@ -19,7 +19,7 @@ textarea {
 .login-container {
     width: 50%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.7);
     border-left: 5px solid #007bff;
     display: flex;
     justify-content: center;
