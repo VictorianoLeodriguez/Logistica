@@ -1,19 +1,32 @@
-﻿<div class="login-container">
+﻿@model WebApplication1.Models.Login
+@{
+    Layout = null;
+}
+<div class="login-container">
     <div class="login-overlay">
         <div class="login-box">
             <h2>Entrar</h2>
-            <form>
+
+            @using (Html.BeginForm("ValidaLogin", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
                 <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                    @Html.LabelFor(m => m.Usuario)
+                    @Html.EditorFor(m => m.Usuario, new { htmlAttributes = new { placeholder = "Digite seu Email" } })
+                    @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
                 </div>
+
                 <div class="form-group">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                    @Html.LabelFor(m => m.Senha)
+                    @Html.EditorFor(m => m.Senha, new { htmlAttributes = new { placeholder = "Digite sua Senha" } })
+                    @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
                 </div>
+
                 <button class="btn" type="submit">Login</button>
-            </form>
+            }
         </div>
     </div>
 </div>
+@Styles.Render("~/Content/css")
 <link rel="stylesheet" href="~/Content/Login.css" />

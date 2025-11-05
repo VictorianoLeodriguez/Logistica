@@ -10,17 +10,10 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    @if (Session["BAALOG"] == null)
-    {
+    @Html.Partial("_Menu")
+    <div id="bodyDiv">
         @RenderBody()
-    }
-    else
-    {
-        @Html.Partial("_Menu")
-        <div id="bodyDiv">
-            @RenderBody()
-        </div>
-    }
+    </div>
     @RenderSection("scripts", required: false)
 </body>
 </html>

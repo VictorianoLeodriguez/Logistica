@@ -2,24 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace WebApplication1.Database
 {
     public class HomeController : Controller
     {
         public ActionResult Login()
         {
-            //var usuario = UsuarioDB.ValidarLogin(model);
-
-            //if (usuario != null)
-            //{
-            //    Session["UsuarioLogado"] = usuario;
-            //    return RedirectToAction("Index", "Home");
-            //}
-
-            //ViewBag.Erro = "Login inválido";
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ValidaLogin(Login login)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var usuario = LoginDB.ValidarLogin(login.Usuario, login.Senha);
+
+            if (usuario != null)
+            {
+                Session["BAALOG"] = usuario;
+                return RedirectToAction("Index", "DashBoard");
+            }
+
+                return View("Login", usuario);
         }
 
 
