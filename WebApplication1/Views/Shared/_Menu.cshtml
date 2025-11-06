@@ -68,7 +68,7 @@
                 </ul>
             </li>
             <li class="menu-item">
-                <a href="@Url.Action("Logout","Account")" class="menu-toggle">
+                <a href="@Url.Action("Logout","Home")" class="menu-toggle">
                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24">
                         <path d="M16 2v7h-2v-5h-12v16h12v-5h2v7h-16v-20h16zm2 9v-4l6 5-6 5v-4h-10v-2h10z" />
                     </svg>
@@ -98,20 +98,21 @@
     }
 
 
-
     .side-bar {
-        width: 200px;
-        height: 100vh;
-        background: #212529;
-        color: white;
         position: fixed;
         top: 0;
         left: 0;
+        width: 220px;
+        height: 100vh;
+        background: #212529;
+        color: white;
         border-radius: 0 10px 10px 0;
         padding: 15px;
-        overflow: auto;
+        overflow-y: auto;
+        transition: width 0.3s ease;
         z-index: 1000;
     }
+
 
     .menu {
         list-style: none;
@@ -139,9 +140,9 @@
     }
 
     .main-content {
-        margin-left: 200px;
+        margin-left: 220px;
         padding: 20px;
-        transition: margin-left 0.3s;
+        transition: margin-left 0.3s ease;
     }
 
     .sub-menu-item {

@@ -1,3 +1,159 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Simulada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .circle-chart {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(#0d6efd 0% 70%, #e9ecef 0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin: auto;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 80px;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .bar {
+            width: 50px;
+            background: #00bcd4;
+            margin: 10px auto 0;
+            border-radius: 5px 5px 0 0;
+            transition: height 0.3s;
+        }
+
+            .bar.green {
+                background-color: #198754;
+            }
+
+            .bar.orange {
+                background-color: #fd7e14;
+            }
+
+            .bar.red {
+                background-color: #dc3545;
+            }
+
+        .legend {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body class="p-3">
+
+    <div class="main-content">
+        <div class="dvContainerDash">
+            <h1 class="mb-4">Dashboard Simulada</h1>
+
+            <div class="row g-4">
+                <!-- Card 1: Tarefas -->
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h5>Status de Entregas</h5>
+                        <div class="progress mt-3" style="height: 20px;">
+                            <div class="progress-bar bg-success" style="width: 75%;"></div>
+                        </div>
+                        <small class="text-muted mt-2 d-block">75% concluídas</small>
+                    </div>
+                </div>
+
+                <!-- Card 2: Projetos -->
+                <div class="col-md-4">
+                    <div class="card p-3 text-center">
+                        <h5>Caminhões Ativos</h5>
+                        <div class="circle-chart mt-3">70%</div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Mini Gráfico -->
+                <div class="col-md-4">
+                    <div class="card p-3 text-center">
+                        <h5>Novas Demandas</h5>
+                        <div class="bar-chart">
+                            <div class="bar green" style="height: 40%;"></div>
+                            <div class="bar orange" style="height: 60%;"></div>
+                            <div class="bar red" style="height: 30%;"></div>
+                            <div class="bar green" style="height: 50%;"></div>
+                        </div>
+                        <div class="legend">
+                            <span>Seg</span>
+                            <span>Ter</span>
+                            <span>Qua</span>
+                            <span>Qui</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linha de Indicadores -->
+            <div class="row g-4 mt-4">
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">
+                        <h6>Estoque da Carga A</h6>
+                        <div class="progress mt-2" style="height: 12px;">
+                            <div class="progress-bar bg-info" style="width: 60%;"></div>
+                        </div>
+                        <small>60%</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">
+                        <h6>Estoque da Carga B</h6>
+                        <div class="progress mt-2" style="height: 12px;">
+                            <div class="progress-bar bg-warning" style="width: 30%;"></div>
+                        </div>
+                        <small>30%</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">
+                        <h6>Estoque da Carga C</h6>
+                        <div class="progress mt-2" style="height: 12px;">
+                            <div class="progress-bar bg-danger" style="width: 80%;"></div>
+                        </div>
+                        <small>80%</small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 text-center">
+                        <h6>Estoque da Carga D</h6>
+                        <div class="progress mt-2" style="height: 12px;">
+                            <div class="progress-bar bg-success" style="width: 50%;"></div>
+                        </div>
+                        <small>50%</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -87,32 +87,21 @@ textarea {
 }
 
 .dvContainer {
-    background: white;
+    background: grey;
     padding: 15px;
     margin: 0 10px 10px 10px;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-.dvContainerCad .table-responsive {
-    max-height: 80vh;
+.dvContainerDash {
+    background: grey;
+    padding: 25px;
+    margin-left: 240px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    min-height: calc(100vh - 40px);
+    transition: margin-left 0.3s ease;
 }
-
-.dvContainerLi .table-responsive {
-    max-height: 80vh;
-}
-
-.dvCadHeader {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-
-    .dvCadHeader button {
-        margin-top: auto !important;
-        margin-bottom: auto !important;
-    }
-
-    .dvCadHeader input {
-        padding-right: 30px !important;
-    }
