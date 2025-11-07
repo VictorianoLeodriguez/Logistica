@@ -1,0 +1,32 @@
+﻿<div class="main-content">
+    @model WebApplication1.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Cadastro de Usuário";
+}
+
+<div class="container mt-4">
+    <h2>Cadastro de Usuário</h2>
+    <hr />
+
+    @using (Html.BeginForm("Cadastro", "CadUser", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <label for="Nome">Nome</label>
+            @Html.TextBoxFor(m => m.Nome, new { @class = "w-100", placeholder = "Digite o nome" })
+            @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            <label for="CPF">CPF</label>
+            @Html.TextBoxFor(m => m.CPF, new { @class = "w-100", placeholder = "Digite o CPF" })
+            @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="@Url.Action("Lista", "CadUser")" class="btn btn-secondary">Voltar</a>
+        </div>
+    }
+</div>
+</div>

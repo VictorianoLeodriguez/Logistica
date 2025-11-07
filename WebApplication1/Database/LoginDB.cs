@@ -16,8 +16,8 @@ namespace WebApplication1.Database
     {
         public static Login ValidarLogin(string email, string senha)
         {
-            var query = @"SELECT USR_AIC, USR_EML, USR_PASS, USR_RM
-                          FROM usr
+            var query = @"SELECT USR_AIC, USR_EML, USR_PASS 
+                          FROM usrk
                           WHERE USR_EML = @USR_EML
                           AND USR_PASS = @USR_PASS";
 

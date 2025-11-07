@@ -1,25 +1,80 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-//using System.Web;
+using System.Web;
+using WebApplication1.Models;
 
-//namespace WebApplication1.Database
-//{
-//    public class UsuarioDB
-//    {
-//        public static Usuario ValidarLogin(LoginModel model)
-//        {
-//            // Simulação de validação de login
-//            if (model.Username == "admin" && model.Password == "password")
-//            {
-//                return new Usuario
-//                {
-//                    Id = 1,
-//                    Username = "admin",
-//                    Nome = "Administrador"
-//                };
-//            }
-//            return null;
-//        }
-//    }
-//}
+namespace WebApplication1.Database
+{
+    public class UsuarioDB
+    {
+        public static bool Adicionar(Usuario user)
+        {
+            string sql = @"INSERT INTO usrk (USR_NM, USR_CPF)
+                           VALUES (@USR_NM, @USR_CPF)";
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("USR_NM", user.Nome),
+                new MySqlParameter("USR_CPF", user.CPF)
+            };
+
+            return SQLDB.Executar(sql, parametros) > 0;
+        }
+
+        public static bool Editar(Usuario user)
+        {
+            string sql = @"UPDATE usrk 
+                           SET USR_NM = @USR_NM,
+                               USR_CPF = @USR_CPF
+                           WHERE USR_AIC = @USR_AIC";
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("USR_AIC", user.Codigo),
+                new MySqlParameter("USR_NM", user.Nome),
+                new MySqlParameter("USR_CPF", user.CPF)
+            };
+
+            return SQLDB.Executar(sql, parametros) > 0;
+        }
+
+        public static bool Excluir(int codigo)
+        {
+            string sql = @"DELETE FROM usrk WHERE USR_AIC = @USR_AIC";
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("USR_AIC", codigo)
+            };
+
+            return SQLDB.Executar(sql, parametros) > 0;
+        }
+
+        public static List<Usuario> Lista(Usuario user)
+        {
+            var cmd = @"SELECT USR_AIC, USR_NM, USR_CPF
+                        FROM usrk";
+
+            DataTable dt = SQLDB.Consultar(cmd);
+
+            if (dt.Rows.Count == 0)
+                return null;
+
+            DataRow row = dt.Rows[0];
+
+            var lista = new List<Usuario>();
+
+            foreach (DataRow r in dt.Rows)
+            {
+                lista.Add(new Usuario
+                {
+                    Codigo = Convert.ToInt32(r["USR_AIC"]),
+                    Nome = r["USR_NM"].ToString(),
+                    CPF = r["USR_CPF"].ToString()
+                });
+            }
+            return lista;
+        }
+    }
+}
