@@ -13,18 +13,19 @@ namespace WebApplication1.Database
     {
         public static bool Adicionar(Usuario user)
         {
-            string sql = @"INSERT INTO usrk (USR_NM, USR_CPF)
-                           VALUES (@USR_NM, @USR_CPF)";
+            string sql = @"INSERT INTO usrk (USR_NM, USR_CPF, USR_PASS)
+                           VALUES (@USR_NM, @USR_CPF, @USR_PASS)";
             var parametros = new List<MySqlParameter>
             {
                 new MySqlParameter("USR_NM", user.Nome),
-                new MySqlParameter("USR_CPF", user.CPF)
+                new MySqlParameter("USR_CPF", user.CPF),
+                new MySqlParameter("USR_PASS", user.senha)
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
         }
 
-        public static bool Editar(Usuario user)
+        public static bool Editar(Usuario user, int id = -1)
         {
             string sql = @"UPDATE usrk 
                            SET USR_NM = @USR_NM,
@@ -32,7 +33,7 @@ namespace WebApplication1.Database
                            WHERE USR_AIC = @USR_AIC";
             var parametros = new List<MySqlParameter>
             {
-                new MySqlParameter("USR_AIC", user.Codigo),
+                new MySqlParameter("USR_AIC", id),
                 new MySqlParameter("USR_NM", user.Nome),
                 new MySqlParameter("USR_CPF", user.CPF)
             };

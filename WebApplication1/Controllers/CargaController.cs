@@ -3,47 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication1.Database;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace WebApplication1.Database
 {
-    public class CadUserController : Controller
+    public class CargaController : Controller
     {
-        // GET: CadUser
+        // GET: Carga
         public ActionResult Cadastro()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Cadastro(Usuario usuario, int id = -1)
+        public ActionResult Cadastro(Carga carga, int id = -1)
         {
             if (id < 0)
             {
 
-                UsuarioDB.Adicionar(usuario);
+                CargaDB.Adicionar(carga);
             }
             else
             {
 
-                UsuarioDB.Editar(usuario, id);
+                CargaDB.Editar(carga, id);
                 return RedirectToAction("Lista");
             }
-            return View(usuario);
+            return View(carga);
         }
 
         public ActionResult Excluir(int id)
         {
-            UsuarioDB.Excluir(id);
+            CargaDB.Excluir(id);
             return RedirectToAction("Lista");
         }
 
         public ActionResult Lista()
         {
-            var user = new Usuario();
+            var carga = new Carga();
 
-            var lista = UsuarioDB.Lista(user);
+            var lista = CargaDB.Lista(carga);
 
             return View(lista);
         }

@@ -161,8 +161,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CadUserController.cs" />
+    <Compile Include="Controllers\CaminhaoController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Database\CaminhaoDB.cs" />
+    <Compile Include="Controllers\CargaController.cs" />
+    <Compile Include="Database\CargaDB.cs" />
     <Compile Include="Database\LoginDB.cs" />
     <Compile Include="Database\UsuarioDB.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,6 +247,10 @@
     <Content Include="Views\DashBoard\Index.cshtml" />
     <Content Include="Views\CadUser\Lista.cshtml" />
     <Content Include="Views\CadUser\Cadastro.cshtml" />
+    <Content Include="Views\Caminhao\Lista.cshtml" />
+    <Content Include="Views\Caminhao\Cadastro.cshtml" />
+    <Content Include="Views\Carga\Lista.cshtml" />
+    <Content Include="Views\Carga\Cadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

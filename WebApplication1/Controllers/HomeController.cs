@@ -45,7 +45,6 @@ namespace WebApplication1.Database
 
         public ActionResult Logout()
         {
-            Session.Clear();
             return RedirectToAction("Login", "Home");
         }
     }

@@ -1,0 +1,34 @@
+﻿<div class="main-content">
+    @model WebApplication1.Models.Caminhao
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "Cadastro de Caminhão";
+    }
+
+    <div class="container mt-4">
+        <h2>Cadastro de Caminhão</h2>
+        <hr />
+
+        @using (Html.BeginForm("Cadastro", "Caminhao", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.Codigo)
+
+            <div class="mb-3">
+                <label for="Nome">Placa</label>
+                @Html.TextBoxFor(m => m.Placa, new { @class = "w-100", placeholder = "Digite o nome" })
+                @Html.ValidationMessageFor(m => m.Placa, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                <label for="Nome">Modelo</label>
+                @Html.TextBoxFor(m => m.Modelo, new { @class = "w-100", placeholder = "Digite a senha" })
+                @Html.ValidationMessageFor(m => m.Modelo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="@Url.Action("Lista", "Caminhao")" class="btn btn-secondary">Voltar</a>
+            </div>
+        }
+    </div>
+</div>

@@ -7,5 +7,11 @@ namespace WebApplication1.Models
 {
     public class Caminhao
     {
+        public int Codigo { get; set; }
+
+        public string Placa { get; set; }
+
+        public string Modelo { get; set; }
+
     }
 }

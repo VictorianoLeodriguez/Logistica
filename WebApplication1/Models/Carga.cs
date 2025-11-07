@@ -7,5 +7,12 @@ namespace WebApplication1.Models
 {
     public class Carga
     {
+        public int codigo { get; set; }
+
+        public string Descricao { get; set; }
+
+        public string Remetente { get; set; }
+
+        public string Quantidade { get; set; }
     }
 }

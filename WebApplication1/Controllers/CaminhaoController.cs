@@ -8,42 +8,44 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class CadUserController : Controller
+    public class CaminhaoController : Controller
     {
-        // GET: CadUser
+        // GET: Caminhao
         public ActionResult Cadastro()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Cadastro(Usuario usuario, int id = -1)
+        public ActionResult Cadastro(Caminhao caminhao, int id = -1)
         {
+
             if (id < 0)
             {
 
-                UsuarioDB.Adicionar(usuario);
+                CaminhaoDB.Adicionar(caminhao);
             }
             else
             {
 
-                UsuarioDB.Editar(usuario, id);
+                CaminhaoDB.Editar(caminhao, id);
                 return RedirectToAction("Lista");
             }
-            return View(usuario);
+
+            return View(caminhao);
         }
 
         public ActionResult Excluir(int id)
         {
-            UsuarioDB.Excluir(id);
+            CaminhaoDB.Excluir(id);
             return RedirectToAction("Lista");
         }
 
         public ActionResult Lista()
         {
-            var user = new Usuario();
+            var caminhao = new Caminhao();
 
-            var lista = UsuarioDB.Lista(user);
+            var lista = CaminhaoDB.Lista(caminhao);
 
             return View(lista);
         }
