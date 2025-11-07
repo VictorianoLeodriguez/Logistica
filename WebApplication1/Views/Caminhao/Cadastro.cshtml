@@ -15,13 +15,13 @@
 
             <div class="mb-3">
                 <label for="Nome">Placa</label>
-                @Html.TextBoxFor(m => m.Placa, new { @class = "w-100", placeholder = "Digite o nome" })
+                @Html.TextBoxFor(m => m.Placa, new { @class = "w-100"})
                 @Html.ValidationMessageFor(m => m.Placa, "", new { @class = "text-danger" })
             </div>
 
             <div class="mb-3">
                 <label for="Nome">Modelo</label>
-                @Html.TextBoxFor(m => m.Modelo, new { @class = "w-100", placeholder = "Digite a senha" })
+                @Html.TextBoxFor(m => m.Modelo, new { @class = "w-100"})
                 @Html.ValidationMessageFor(m => m.Modelo, "", new { @class = "text-danger" })
             </div>
 
