@@ -10,7 +10,6 @@ namespace WebApplication1.Models
     {
         [Required(ErrorMessage = "O campo Usuário é obrigatório.")]
         [Display(Name = "Usuário")]
-        [MaxLength(50)]
         public string Usuario { get; set; }
 
         [Required(ErrorMessage = "O campo Senha é obrigatório.")]

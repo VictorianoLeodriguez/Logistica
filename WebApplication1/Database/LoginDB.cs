@@ -19,8 +19,7 @@ namespace WebApplication1.Database
             var query = @"SELECT USR_AIC, USR_EML, USR_PASS 
                           FROM usrk
                           WHERE USR_EML = @USR_EML
-                          AND USR_PASS = @USR_PASS
-                          ND USR_P_M = @USR_PASS";
+                          AND USR_PASS = @USR_PASS";
 
             var parametros = new List<MySqlParameter>
             {
