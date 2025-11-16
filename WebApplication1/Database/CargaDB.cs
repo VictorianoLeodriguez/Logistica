@@ -31,9 +31,12 @@ namespace WebApplication1.Database
                                CRG_REM = @CRG_REM,
                                CRG_QNT = @CRG_QNT
                            WHERE CRG_AIC = @CRG_AIC";
+
+            @"update crg set CRG_SATUS = @CTG_SATUS"
             var parametros = new List<MySqlParameter>
             {
                 new MySqlParameter("CRG_DESC", carga.Descricao),
+                new MySqlParameter("C")
                 new MySqlParameter("CRG_AIC", id),
                 new MySqlParameter("CRG_REM", carga.Remetente),
                 new MySqlParameter("CRG_QNT", carga.Quantidade)

@@ -4,3 +4,9 @@
         window.location.href = '/CadUser/Cadastro/' + id;
     }
 });
+
+$(document).on('click', '#btn', function () {
+    var senha = $('#Selecionar').val();
+
+
+})

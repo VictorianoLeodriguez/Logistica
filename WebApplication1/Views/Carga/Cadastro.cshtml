@@ -11,10 +11,16 @@
 
         @using (Html.BeginForm("Cadastro", "Carga", FormMethod.Post))
         {
+
             <div class="mb-3">
                 <label for="Nome">Descrição</label>
                 @Html.TextBoxFor(m => m.Remetente, new { @class = "w-100"})
                 @Html.ValidationMessageFor(m => m.Remetente, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="row">
+                <div class="col-md-auto">
+                </div>
             </div>
 
             <div class="mb-3">
