@@ -13,13 +13,14 @@ namespace WebApplication1.Database
     {
         public static bool Adicionar(Usuario user)
         {
-            string sql = @"INSERT INTO usrk (USR_NM, USR_CPF, USR_PASS)
-                           VALUES (@USR_NM, @USR_CPF, @USR_PASS)";
+            string sql = @"INSERT INTO usrk (USR_NM, USR_CPF, USR_PASS, USR_EML)
+                           VALUES (@USR_NM, @USR_CPF, @USR_PASS, @USR_EML)";
             var parametros = new List<MySqlParameter>
             {
                 new MySqlParameter("USR_NM", user.Nome),
                 new MySqlParameter("USR_CPF", user.CPF),
-                new MySqlParameter("USR_PASS", user.senha)
+                new MySqlParameter("USR_PASS", user.senha),
+                new MySqlParameter("USR_EML", user.Email)
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
@@ -29,13 +30,17 @@ namespace WebApplication1.Database
         {
             string sql = @"UPDATE usrk 
                            SET USR_NM = @USR_NM,
-                               USR_CPF = @USR_CPF
+                               USR_CPF = @USR_CPF,
+                                    USR_PASS = @USR_PASS,
+                                 USR_EML = @USR_EML
                            WHERE USR_AIC = @USR_AIC";
             var parametros = new List<MySqlParameter>
             {
                 new MySqlParameter("USR_AIC", id),
                 new MySqlParameter("USR_NM", user.Nome),
-                new MySqlParameter("USR_CPF", user.CPF)
+                new MySqlParameter("USR_CPF", user.CPF),
+                new MySqlParameter("USR_PASS", user.senha),
+                new MySqlParameter("USR_EML", user.Email)
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
