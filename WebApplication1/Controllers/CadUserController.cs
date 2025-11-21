@@ -24,7 +24,7 @@ namespace WebApplication1.Controllers
 
             if (!ValidadorUsuario.ValidarCPF(usuario.CPF))
             {
-                ModelState.AddModelError("CPF", "CPF inválido.");
+                ModelState.AddModelError("CPF", "Cpf inválido.");
             }
 
             if (!ValidadorUsuario.ValidarSenha(usuario.senha))
