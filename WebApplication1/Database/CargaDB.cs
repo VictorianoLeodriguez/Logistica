@@ -93,5 +93,17 @@ namespace WebApplication1.Database
             return SQLDB.Executar(sql, parametros) > 0;
         }
 
+        public static int ContarPendentes()
+        {
+            string sql = "SELECT COUNT(*) FROM crg WHERE CRG_STATUS = 'Pendente'";
+            return Convert.ToInt32(SQLDB.ConsultarValor(sql));
+        }
+
+        public static int ContarEntregues()
+        {
+            string sql = "SELECT COUNT(*) FROM crg WHERE CRG_STATUS = 'Entregue'";
+            return Convert.ToInt32(SQLDB.ConsultarValor(sql));
+        }
+
     }
 }

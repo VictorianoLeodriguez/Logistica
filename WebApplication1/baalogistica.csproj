@@ -170,6 +170,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Service\ValidadorUsuario.cs" />
     <Compile Include="Models\Caminhao.cs" />
     <Compile Include="Models\Carga.cs" />

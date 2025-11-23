@@ -55,4 +55,19 @@ public static class SQLDB
     {
         return Executar(sql, parametros);
     }
+
+    public static object ConsultarValor(string sql)
+    {
+        using (var conexao = new MySqlConnection(connectionString))
+        {
+            conexao.Open();
+
+            using (var cmd = new MySqlCommand(sql, conexao))
+            {
+                var result = cmd.ExecuteScalar();
+                return result;
+            }
+        }
+    }
+
 }
