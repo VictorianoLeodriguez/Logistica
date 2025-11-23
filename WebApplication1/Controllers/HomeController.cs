@@ -29,10 +29,18 @@ namespace WebApplication1.Database
             if (usuario != null)
             {
                 Session["BAALOG"] = usuario;
-                return RedirectToAction("Index", "DashBoard");
+                // Redireciona conforme o perfil
+                if (usuario.Role == "Admin")
+                {
+                    return RedirectToAction("Index", "DashBoard");
+                }
+                else
+                {
+                    return RedirectToAction("Index2", "UserDashBoard");
+                }
             }
-
-                return View("Login", usuario);
+            ModelState.AddModelError("", "Usuário ou senha inválidos.");
+            return View("Login", usuario);
         }
 
 
@@ -45,6 +53,8 @@ namespace WebApplication1.Database
 
         public ActionResult Logout()
         {
+            Session.Clear();
+            Session.Abandon();
             return RedirectToAction("Login", "Home");
         }
     }

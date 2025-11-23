@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CadUserController.cs" />
     <Compile Include="Controllers\CaminhaoController.cs" />
+    <Compile Include="Controllers\UserDashBoardController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\CaminhaoDB.cs" />
@@ -253,6 +254,9 @@
     <Content Include="Views\Caminhao\Cadastro.cshtml" />
     <Content Include="Views\Carga\Lista.cshtml" />
     <Content Include="Views\Carga\Cadastro.cshtml" />
+    <Content Include="Views\UserDashBoard\Index2.cshtml" />
+    <Content Include="Views\Entrega\Cadastro.cshtml" />
+    <Content Include="Views\Entrega\Lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

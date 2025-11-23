@@ -10,9 +10,10 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
+   
     @Html.Partial("_Menu")
     <div id="bodyDiv">
-        @RenderBody()
+    @RenderBody()
     </div>
     @RenderSection("scripts", required: false)
 </body>

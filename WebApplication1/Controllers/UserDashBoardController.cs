@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-    public class DashBoardController : Controller
+    public class UserDashBoardController : Controller
     {
-        // GET: UserDashBoard
-        public ActionResult Index()
+        // GET: DashBoard
+        public ActionResult Index2()
         {
             return View();
         }

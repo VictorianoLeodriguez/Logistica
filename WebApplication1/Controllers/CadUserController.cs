@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
 
             if (!ValidadorUsuario.ValidarSenha(usuario.senha))
             {
-                ModelState.AddModelError("Senha", "Senha inválida (máx. 8 caracteres, número e especial).");
+                ModelState.AddModelError("Senha", "Senha inválida (máx. 8 caracteres, número e especial)");
             }
 
             // Se houver erros, volta para a View com mensagens

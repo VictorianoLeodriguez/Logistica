@@ -82,5 +82,30 @@ namespace WebApplication1.Database
             }
             return lista;
         }
+        public static Usuario BuscarPorCodigo(int codigo)
+        {
+            string sql = @"SELECT USR_AIC, USR_NM, USR_CPF, USR_EML 
+                   FROM usrk 
+                   WHERE USR_AIC = @Codigo";
+
+            var parametros = new List<MySqlParameter>
+    {
+        new MySqlParameter("@Codigo", codigo)
+    };
+
+            DataTable dt = SQLDB.Consultar(sql, parametros);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow r = dt.Rows[0];
+                return new Usuario
+                {
+                    Codigo = Convert.ToInt32(r["USR_AIC"])
+                };
+            }
+
+            return null;
+        }
+
     }
 }
