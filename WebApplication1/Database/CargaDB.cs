@@ -12,13 +12,14 @@ namespace WebApplication1.Database
     {
         public static bool Adicionar(Carga carga)
         {
-            string sql = @"INSERT INTO crg (CRG_DESC, CRG_REM, CRG_QNT)
-                           VALUES (@CRG_DESC, @CRG_REM, @CRG_QNT)";
+            string sql = @"INSERT INTO crg (CRG_DESC, CRG_REM, CRG_QNT, CRG_STATUS)
+                           VALUES (@CRG_DESC, @CRG_REM, @CRG_QNT, @CRG_STATUS)";
             var parametros = new List<MySqlParameter>
             {
                 new MySqlParameter("CRG_DESC", carga.Descricao),
                 new MySqlParameter("CRG_REM", carga.Remetente),
-                new MySqlParameter("CRG_QNT", carga.Quantidade)
+                new MySqlParameter("CRG_QNT", carga.Quantidade),
+                new MySqlParameter("CRG_STATUS", "Pendente")
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
@@ -55,7 +56,7 @@ namespace WebApplication1.Database
 
         public static List<Carga> Lista(Carga carga)
         {
-            var cmd = @"SELECT CRG_AIC, CRG_DESC, CRG_REM, CRG_QNT
+            var cmd = @"SELECT CRG_AIC, CRG_DESC, CRG_REM, CRG_QNT, CRG_STATUS
                         FROM crg";
 
             DataTable dt = SQLDB.Consultar(cmd);
@@ -74,10 +75,23 @@ namespace WebApplication1.Database
                     codigo = Convert.ToInt32(r["CRG_AIC"]),
                     Quantidade = r["CRG_QNT"].ToString(),
                     Remetente = r["CRG_REM"].ToString(),
-                    Descricao = r["CRG_DESC"].ToString()
+                    Descricao = r["CRG_DESC"].ToString(),
+                    Status = r["CRG_STATUS"].ToString()
                 });
             }
             return lista;
         }
+
+        public static bool MarcarComoEntregue(int id)
+        {
+            string sql = @"UPDATE crg SET CRG_STATUS = 'Entregue' WHERE CRG_AIC = @id";
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("id", id)
+            };
+
+            return SQLDB.Executar(sql, parametros) > 0;
+        }
+
     }
 }

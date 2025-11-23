@@ -46,5 +46,13 @@ namespace WebApplication1.Database
 
             return View(lista);
         }
+
+        [HttpPost]
+        public ActionResult ConcluirEntrega(int id)
+        {
+            CargaDB.MarcarComoEntregue(id);
+            return RedirectToAction("Lista");
+        }
+
     }
 }

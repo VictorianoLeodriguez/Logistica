@@ -14,5 +14,7 @@ namespace WebApplication1.Models
         public string Remetente { get; set; }
 
         public string Quantidade { get; set; }
+
+        public string Status { get; set; }
     }
 }

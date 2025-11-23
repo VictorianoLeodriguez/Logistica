@@ -38,7 +38,7 @@ namespace WebApplication1.Database
             {
                 Senha = row["USR_PASS"].ToString(),
                 Usuario = row["USR_EML"].ToString(),
-                Role = (email == "juogiskibryan2@gmail.com") ? "Admin" : "User"
+                Role = (email == "daniel2000@gmail.com") ? "Admin" : "User"
             };
             return user;
         }
