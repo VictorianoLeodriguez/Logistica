@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Database;
 
-namespace WebApplication1.Database
+namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {

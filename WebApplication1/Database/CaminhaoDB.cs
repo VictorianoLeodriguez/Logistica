@@ -2,78 +2,63 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using WebApplication1.Models;
 
 namespace WebApplication1.Database
 {
     public class CaminhaoDB
     {
-        public static bool Adicionar(Caminhao user)
+        // LISTAR CAMINHÕES
+        public static List<Caminhao> Listar()
         {
-            string sql = @"INSERT INTO cmho (CMHO_PLA, CMHO_MDL)
-                           VALUES (@CMHO_PLA, @CMHO_MDL)";
-            var parametros = new List<MySqlParameter>
-            {
-                new MySqlParameter("CMHO_PLA", user.Placa),
-                new MySqlParameter("CMHO_MDL", user.Modelo)
-            };
+            string sql = @"SELECT CMHO_AIC, CMHO_PLA, CMHO_MDL FROM cmho";
 
-            return SQLDB.Executar(sql, parametros) > 0;
-        }
-
-        public static bool Editar(Caminhao user, int id = -1)
-        {
-            string sql = @"UPDATE cmho 
-                           SET CMHO_PLA = @CMHO_PLA,
-                               CMHO_MDL = @CMHO_MDL
-                           WHERE CMHO_AIC = @CMHO_AIC";
-            var parametros = new List<MySqlParameter>
-            {
-                new MySqlParameter("CMHO_PLA", user.Placa),
-                new MySqlParameter("CMHO_AIC", id),
-                new MySqlParameter("CMHO_MDL", user.Modelo)
-            };
-
-            return SQLDB.Executar(sql, parametros) > 0;
-        }
-
-        public static bool Excluir(int codigo)
-        {
-            string sql = @"DELETE FROM cmho WHERE CMHO_AIC = @CMHO_AIC";
-            var parametros = new List<MySqlParameter>
-            {
-                new MySqlParameter("CMHO_AIC", codigo)
-            };
-
-            return SQLDB.Executar(sql, parametros) > 0;
-        }
-
-        public static List<Caminhao> Lista(Caminhao user)
-        {
-            var cmd = @"SELECT CMHO_AIC, CMHO_PLA, CMHO_MDL
-                        FROM cmho";
-
-            DataTable dt = SQLDB.Consultar(cmd);
-
+            DataTable dt = SQLDB.Consultar(sql);
             if (dt.Rows.Count == 0)
-                return null;
-
-            DataRow row = dt.Rows[0];
+                return new List<Caminhao>();
 
             var lista = new List<Caminhao>();
 
-            foreach (DataRow r in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 lista.Add(new Caminhao
                 {
-                    Codigo = Convert.ToInt32(r["CMHO_AIC"]),
-                    Placa = r["CMHO_PLA"].ToString(),
-                    Modelo = r["CMHO_MDL"].ToString()
+                    CMHO_AIC = Convert.ToInt32(row["CMHO_AIC"]),
+                    CMHO_PLA = row["CMHO_PLA"].ToString(),
+                    CMHO_MDL = row["CMHO_MDL"].ToString()
                 });
             }
+
             return lista;
+        }
+
+        // ADICIONAR
+        public static bool Adicionar(Caminhao cam)
+        {
+            string sql = @"INSERT INTO cmho (CMHO_PLA, CMHO_MDL, USR_AIC)
+                           VALUES (@CMHO_PLA, @CMHO_MDL, @USR_AIC)";
+
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("@CMHO_PLA", cam.CMHO_PLA),
+                new MySqlParameter("@CMHO_MDL", cam.CMHO_MDL),
+                new MySqlParameter("@USR_AIC", cam.USR_AIC)
+            };
+
+            return SQLDB.Executar(sql, parametros) > 0;
+        }
+
+        // EXCLUIR
+        public static bool Excluir(int id)
+        {
+            string sql = @"DELETE FROM cmho WHERE CMHO_AIC = @ID";
+
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("@ID", id)
+            };
+
+            return SQLDB.Executar(sql, parametros) > 0;
         }
     }
 }

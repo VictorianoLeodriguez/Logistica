@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,11 +8,14 @@ namespace WebApplication1.Models
 {
     public class Caminhao
     {
-        public int Codigo { get; set; }
+        public int CMHO_AIC { get; set; }      // Código do caminhão
 
-        public string Placa { get; set; }
+        [Required]
+        public string CMHO_PLA { get; set; }   // Placa
 
-        public string Modelo { get; set; }
+        [Required]
+        public string CMHO_MDL { get; set; }   // Modelo
 
+        public int USR_AIC { get; set; }
     }
 }

@@ -16,7 +16,8 @@ namespace WebApplication1.Models
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
-        public string Role { get; set; } 
+        public string Role { get; set; }
 
+        public int USR_AIC { get; set; }
     }
 }

@@ -1,40 +1,33 @@
-﻿<div class="main-content">
-    @model WebApplication1.Models.Caminhao
-    @{
-        Layout = "~/Views/Shared/_Layout.cshtml";
-        ViewBag.Title = "Cadastro de Caminhão";
+﻿@model WebApplication1.Models.Caminhao
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Cadastrar Caminhão</h2>
+    <hr />
+
+    @if (ViewBag.Message != null)
+    {
+    <div class="alert alert-success">@ViewBag.Message</div>
     }
 
-    <div class="container mt-4">
-        <h2>Cadastro de Caminhão</h2>
-        <hr />
-
-        @using (Html.BeginForm("Cadastro", "Caminhao", FormMethod.Post))
-        {
-            @Html.HiddenFor(m => m.Codigo)
-
-    <div class="mb-3">
-        <label for="MotoristaCodigo">Motorista</label>
-        @Html.DropDownListFor(m => m.MotoristaCodigo, (List<SelectListItem>)ViewBag.Motoristas, "Selecione um motorista", new { @class = "form-select w-100" })
-        @Html.ValidationMessageFor(m => m.MotoristaCodigo, "", new { @class = "text-danger" })
+    @using (Html.BeginForm("Cadastro", "Caminhao", FormMethod.Post))
+    {
+    <div class="form-group mb-3">
+        <label>Placa</label>
+        @Html.TextBoxFor(m => m.CMHO_PLA, new { @class = "form-control", placeholder = "ABC1D23" })
     </div>
 
-            <div class="mb-3">
-                <label for="Nome">Placa</label>
-                @Html.TextBoxFor(m => m.Placa, new { @class = "w-100" })
-                @Html.ValidationMessageFor(m => m.Placa, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="mb-3">
-                <label for="Nome">Modelo</label>
-                @Html.TextBoxFor(m => m.Modelo, new { @class = "w-100" })
-                @Html.ValidationMessageFor(m => m.Modelo, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-success">Salvar</button>
-                <a href="@Url.Action("Lista", "Caminhao")" class="btn btn-secondary">Voltar</a>
-            </div>
-        }
+    <div class="form-group mb-3">
+        <label>Modelo</label>
+        @Html.TextBoxFor(m => m.CMHO_MDL, new { @class = "form-control", placeholder = "Modelo do caminhão" })
     </div>
+
+    @Html.HiddenFor(m => m.CMHO_AIC)
+
+    <button class="btn btn-success" type="submit">Salvar</button>
+    <a href="@Url.Action("Lista", "Caminhao")" class="btn btn-secondary ms-2">Voltar</a>
+    }
 </div>

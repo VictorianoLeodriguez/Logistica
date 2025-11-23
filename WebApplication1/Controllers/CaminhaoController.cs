@@ -10,44 +10,54 @@ namespace WebApplication1.Controllers
 {
     public class CaminhaoController : Controller
     {
-        // GET: Caminhao
+        // GET: Caminhao/Cadastro
+        [HttpGet]
         public ActionResult Cadastro()
         {
+            if (Session["BAALOG"] == null) // Garante que só usuário logado veja
+                return RedirectToAction("Login", "Home");
+
             return View();
         }
 
+        // POST: Caminhao/Cadastro
         [HttpPost]
-        public ActionResult Cadastro(Caminhao caminhao, int id = -1)
+        public ActionResult Cadastro(Caminhao caminhao)
         {
+            if (Session["BAALOG"] == null)
+                return RedirectToAction("Login", "Home");
 
-            if (id < 0)
-            {
+            var usuario = Session["BAALOG"] as WebApplication1.Models.Login;
+            caminhao.USR_AIC = usuario.USR_AIC;
 
-                CaminhaoDB.Adicionar(caminhao);
-            }
+            bool sucesso = CaminhaoDB.Adicionar(caminhao); // Usa MySQL
+
+            if (sucesso)
+                ViewBag.Message = "Caminhão cadastrado com sucesso!";
             else
-            {
+                ViewBag.Message = "Erro ao cadastrar caminhão.";
 
-                CaminhaoDB.Editar(caminhao, id);
-                return RedirectToAction("Lista");
-            }
-
-            return View(caminhao);
+            return View();
         }
 
-        public ActionResult Excluir(int id)
-        {
-            CaminhaoDB.Excluir(id);
-            return RedirectToAction("Lista");
-        }
-
+        // GET: Caminhao/Lista
         public ActionResult Lista()
         {
-            var caminhao = new Caminhao();
+            if (Session["BAALOG"] == null)
+                return RedirectToAction("Login", "Home");
 
-            var lista = CaminhaoDB.Lista(caminhao);
-
+            var lista = CaminhaoDB.Listar(); // Pega todos os caminhões
             return View(lista);
+        }
+
+        // GET: Caminhao/Excluir/5
+        public ActionResult Excluir(int id)
+        {
+            if (Session["BAALOG"] == null)
+                return RedirectToAction("Login", "Home");
+
+            CaminhaoDB.Excluir(id);
+            return RedirectToAction("Lista");
         }
     }
 }
