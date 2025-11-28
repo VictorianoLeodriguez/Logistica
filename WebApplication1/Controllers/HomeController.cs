@@ -27,11 +27,20 @@ namespace WebApplication1.Controllers
 
             var usuario = LoginDB.ValidarLogin(login.Usuario, login.Senha);
 
-            if (usuario != null)
+            var usuarioDoBanco = LoginDB.ValidarLogin(login.Usuario, login.Senha);
+
+            if (usuarioDoBanco != null)
             {
-                Session["BAALOG"] = usuario;
+                var usuarioSessao = new Login
+                {
+                    Usuario = usuarioDoBanco.USR_EML,
+                    Role = usuarioDoBanco.Role,
+                    USR_AIC = usuarioDoBanco.USR_AIC // <-- aqui você salva o ID do usuário
+                };
+
+                Session["BAALOG"] = usuarioSessao;
                 // Redireciona conforme o perfil
-                if (usuario.Role == "Admin")
+                if (usuarioSessao.Role == "Admin")
                 {
                     return RedirectToAction("Index", "DashBoard");
                 }

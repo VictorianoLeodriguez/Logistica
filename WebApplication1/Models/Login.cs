@@ -19,5 +19,6 @@ namespace WebApplication1.Models
         public string Role { get; set; }
 
         public int USR_AIC { get; set; }
+        public string USR_EML { get; set; }
     }
 }

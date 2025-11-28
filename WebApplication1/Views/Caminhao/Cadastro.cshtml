@@ -25,6 +25,11 @@
         @Html.TextBoxFor(m => m.CMHO_MDL, new { @class = "form-control", placeholder = "Modelo do caminhão" })
     </div>
 
+    <div class="form-group">
+        <label>ID do Motorista</label>
+        <input type="number" name="USR_AIC" class="form-control" required />
+    </div>
+
     @Html.HiddenFor(m => m.CMHO_AIC)
 
     <button class="btn btn-success" type="submit">Salvar</button>

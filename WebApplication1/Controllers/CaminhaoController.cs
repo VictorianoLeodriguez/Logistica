@@ -24,19 +24,13 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Cadastro(Caminhao caminhao)
         {
-            if (Session["BAALOG"] == null)
+            var usuario = Session["BAALOG"] as Login;
+            if (usuario == null)
                 return RedirectToAction("Login", "Home");
 
-            var usuario = Session["BAALOG"] as WebApplication1.Models.Login;
-            caminhao.USR_AIC = usuario.USR_AIC;
+            bool sucesso = CaminhaoDB.Adicionar(caminhao);
 
-            bool sucesso = CaminhaoDB.Adicionar(caminhao); // Usa MySQL
-
-            if (sucesso)
-                ViewBag.Message = "Caminhão cadastrado com sucesso!";
-            else
-                ViewBag.Message = "Erro ao cadastrar caminhão.";
-
+            ViewBag.Message = sucesso ? "Caminhão cadastrado com sucesso!" : "Erro ao cadastrar caminhão.";
             return View();
         }
 

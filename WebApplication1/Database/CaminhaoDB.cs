@@ -36,17 +36,18 @@ namespace WebApplication1.Database
         public static bool Adicionar(Caminhao cam)
         {
             string sql = @"INSERT INTO cmho (CMHO_PLA, CMHO_MDL, USR_AIC)
-                           VALUES (@CMHO_PLA, @CMHO_MDL, @USR_AIC)";
+                  VALUES (@CMHO_PLA, @CMHO_MDL, @USR_AIC)";
 
             var parametros = new List<MySqlParameter>
             {
                 new MySqlParameter("@CMHO_PLA", cam.CMHO_PLA),
                 new MySqlParameter("@CMHO_MDL", cam.CMHO_MDL),
-                new MySqlParameter("@USR_AIC", cam.USR_AIC)
+                new MySqlParameter("@USR_AIC", cam.USR_AIC),
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
         }
+
 
         // EXCLUIR
         public static bool Excluir(int id)
@@ -59,6 +60,19 @@ namespace WebApplication1.Database
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
+        }
+
+        public static bool UsuarioExiste(int id)
+        {
+            string sql = "SELECT 1 FROM usrk WHERE USR_AIC = @ID";
+
+            var parametros = new List<MySqlParameter>
+            {
+                new MySqlParameter("@ID", id)
+            };
+
+            DataTable dt = SQLDB.Consultar(sql, parametros);
+            return dt.Rows.Count > 0;
         }
     }
 }
