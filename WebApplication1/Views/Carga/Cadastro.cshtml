@@ -11,22 +11,22 @@
 
         @using (Html.BeginForm("Cadastro", "Carga", FormMethod.Post))
         {
-            <div class="mb-3">
-                <label for="Nome">Descrição</label>
+            <div class="form-group">
+                <label for="Nome">Remetente</label>
                 @Html.TextBoxFor(m => m.Remetente, new { @class = "w-100"})
                 @Html.ValidationMessageFor(m => m.Remetente, "", new { @class = "text-danger" })
             </div>
 
-            <div class="mb-3">
-                <label for="Nome">Remetente</label>
-                @Html.TextBoxFor(m => m.Quantidade, new { @class = "w-100"})
-                @Html.ValidationMessageFor(m => m.Quantidade, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="mb-3">
-                <label for="CPF">Quantidade</label>
+            <div class="form-group">
+                <label for="Nome">Descrição</label>
                 @Html.TextAreaFor(m => m.Descricao, new { @class = "w-100"})
                 @Html.ValidationMessageFor(m => m.Descricao, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Nome">Quantidade</label>
+                @Html.TextBoxFor(m => m.Quantidade, new { @class = "w-100"})
+                @Html.ValidationMessageFor(m => m.Quantidade, "", new { @class = "text-danger" })
             </div>
 
             <div class="d-flex gap-2">

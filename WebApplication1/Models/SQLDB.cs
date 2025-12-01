@@ -5,7 +5,7 @@ using System.Data;
 
 public static class SQLDB
 {
-    private static string connectionString = "Server=localhost;Database=logisticabaa;Uid=root;Pwd=root;";
+    private static string connectionString = "Server=localhost;Database=sistema_logistica;Uid=root;Pwd=123456;";
 
     public static DataTable Consultar(string sql, List<MySqlParameter> parametros = null)
     {

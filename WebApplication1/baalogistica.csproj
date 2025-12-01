@@ -159,29 +159,31 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CadUserController.cs" />
     <Compile Include="Controllers\CaminhaoController.cs" />
+    <Compile Include="Controllers\EntregaController.cs" />
     <Compile Include="Controllers\UserDashBoardController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\CaminhaoDB.cs" />
     <Compile Include="Controllers\CargaController.cs" />
     <Compile Include="Database\CargaDB.cs" />
+    <Compile Include="Database\EntregaDB.cs" />
     <Compile Include="Database\LoginDB.cs" />
     <Compile Include="Database\UsuarioDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DashboardViewModel.cs" />
+    <Compile Include="Models\Entregas.cs" />
     <Compile Include="Service\ValidadorUsuario.cs" />
     <Compile Include="Models\Caminhao.cs" />
     <Compile Include="Models\Carga.cs" />
-    <Compile Include="Models\Entregas.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\CodigoNome.cs" />
     <Compile Include="Models\SQLDB.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\ValidadorUsuario.cs" />
-    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Utils\StatusHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Baa Logistica.gif" />

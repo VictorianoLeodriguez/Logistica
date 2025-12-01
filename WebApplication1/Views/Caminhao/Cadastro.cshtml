@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container mt-4">
+<div class="main-content container mt-4">
     <h2>Cadastrar Caminhão</h2>
     <hr />
 
@@ -32,7 +32,9 @@
 
     @Html.HiddenFor(m => m.CMHO_AIC)
 
-    <button class="btn btn-success" type="submit">Salvar</button>
-    <a href="@Url.Action("Lista", "Caminhao")" class="btn btn-secondary ms-2">Voltar</a>
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="@Url.Action("Lista", "Caminhao")" class="btn btn-secondary">Voltar</a>
+    </div>
     }
 </div>

@@ -1,0 +1,40 @@
+<div class="main-content">
+    @model WebApplication1.Models.Entregas
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        ViewBag.Title = "Cadastro de Entrega";
+    }
+
+    <div class="container mt-4">
+        <h2>Cadastro de Entrega</h2>
+        <hr />
+
+        @using (Html.BeginForm("Cadastro", "Entrega", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>ID do Motorista</label>
+                <input type="number" name="CRG_AIC" class="form-control" required />
+            </div>
+
+            @Html.HiddenFor(m => m.USR_AIC)
+
+            <div class="form-group">
+                <label>ID da Carga</label>
+                <input type="number" name="CRG_AIC" class="form-control" required />
+            </div>
+
+            @Html.HiddenFor(m => m.CRG_AIC)
+
+            <div class="form-group">
+                <label for="Destino">Destino</label>
+                @Html.TextBoxFor(m => m.Destino, new { @class = "w-100" })
+                @Html.ValidationMessageFor(m => m.Destino, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="@Url.Action("Lista", "Entrega")" class="btn btn-secondary">Voltar</a>
+            </div>
+        }
+    </div>
+</div>

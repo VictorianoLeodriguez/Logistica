@@ -39,7 +39,7 @@ namespace WebApplication1.Database
                 USR_AIC = Convert.ToInt32(row["USR_AIC"]),
                 Senha = row["USR_PASS"].ToString(),
                 Usuario = row["USR_EML"].ToString(),
-                Role = (email == "daniel2000@gmail.com") ? "Admin" : "User"
+                Role = (email == "juogiskibryan2@gmail.com") ? "Admin" : "User"
             };
             return user;
         }

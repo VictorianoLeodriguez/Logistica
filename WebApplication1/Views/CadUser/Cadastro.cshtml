@@ -11,25 +11,25 @@
 
         @using (Html.BeginForm("Cadastro", "CadUser", FormMethod.Post))
         {
-            <div class="mb-3">
+            <div class="form-group">
                 <label for="Nome">Nome</label>
                 @Html.TextBoxFor(m => m.Nome, new { @class = "w-100", placeholder = "Digite o nome" })
                 @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
             </div>
 
-            <div class="mb-3">
+            <div class="form-group">
                 <label for="Nome">Senha</label>
                 @Html.TextBoxFor(m => m.senha, new { @class = "w-100", placeholder = "Digite a senha" })
                 @Html.ValidationMessageFor(m => m.senha, "", new { @class = "text-danger" })
             </div>
 
-            <div class="mb-3">
+            <div class="form-group">
                 <label for="CPF">CPF</label>
                 @Html.TextBoxFor(m => m.CPF, new { @class = "w-100", placeholder = "Digite o CPF" })
                 @Html.ValidationMessageFor(m => m.CPF, "", new { @class = "text-danger" })
             </div>
 
-            <div class="mb-3">
+            <div class="form-group">
                 <label for="Email">Email</label>
                 @Html.TextBoxFor(m => m.Email, new { @class = "w-100", placeholder = "Digite seu E-mail" })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
