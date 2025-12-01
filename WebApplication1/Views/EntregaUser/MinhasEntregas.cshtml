@@ -1,0 +1,59 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pendentes = ViewBag.Pendentes as List<WebApplication1.Models.EntregaUser> ?? new List<WebApplication1.Models.EntregaUser>();
+    var concluidas = ViewBag.Concluidas as List<WebApplication1.Models.EntregaUser> ?? new List<WebApplication1.Models.EntregaUser>();
+}
+
+<div class="main-content container mt-4">
+    <h3>Entregas Pendentes</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Destino</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entrega in pendentes)
+            {
+                <tr>
+                    <td>@entrega.Codigo</td>
+                    <td>@entrega.Destino</td>
+                    <td>@entrega.Status_ETG</td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            @Html.ActionLink("Em Rota", "AtualizarStatus", new { id = entrega.Codigo, status = "Em Rota" }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Entregue", "AtualizarStatus", new { id = entrega.Codigo, status = "Entregue" }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Cancelado", "AtualizarStatus", new { id = entrega.Codigo, status = "Cancelado" }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3 class="container mt-4">Entregas Concluídas</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Destino</th>
+                <th>Status</th>
+                <th>Data e Hora da Entrega</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entrega in concluidas)
+            {
+                <tr>
+                    <td>@entrega.Codigo</td>
+                    <td>@entrega.Destino</td>
+                    <td>@entrega.Status_ETG</td>
+                    <td>@entrega.Data_ETG.ToString("dd/MM/yyyy") @entrega.Hora_ETG</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

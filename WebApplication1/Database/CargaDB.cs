@@ -16,10 +16,10 @@ namespace WebApplication1.Database
                            VALUES (@CRG_DESC, @CRG_REM, @CRG_QNT, @CRG_STATUS)";
             var parametros = new List<MySqlParameter>
             {
-                new MySqlParameter("CRG_DESC", carga.Descricao),
-                new MySqlParameter("CRG_REM", carga.Remetente),
-                new MySqlParameter("CRG_QNT", carga.Quantidade),
-                new MySqlParameter("CRG_STATUS", "Pendente")
+                new MySqlParameter("@CRG_DESC", carga.Descricao),
+                new MySqlParameter("@CRG_REM", carga.Remetente),
+                new MySqlParameter("@CRG_QNT", carga.Quantidade),
+                new MySqlParameter("@CRG_STATUS", "Pendente")
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
@@ -34,10 +34,10 @@ namespace WebApplication1.Database
                            WHERE CRG_AIC = @CRG_AIC";
             var parametros = new List<MySqlParameter>
             {
-                new MySqlParameter("CRG_DESC", carga.Descricao),
-                new MySqlParameter("CRG_AIC", id),
-                new MySqlParameter("CRG_REM", carga.Remetente),
-                new MySqlParameter("CRG_QNT", carga.Quantidade)
+                new MySqlParameter("@CRG_DESC", carga.Descricao),
+                new MySqlParameter("@CRG_AIC", id),
+                new MySqlParameter("@CRG_REM", carga.Remetente),
+                new MySqlParameter("@CRG_QNT", carga.Quantidade)
             };
 
             return SQLDB.Executar(sql, parametros) > 0;

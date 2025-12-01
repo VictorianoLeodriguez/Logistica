@@ -19,10 +19,10 @@ namespace WebApplication1.Database
                            VALUES (@USR_AIC, @ETG_DEST, @ETG_SATUS, @CRG_AIC)";
             var parametros = new List<MySqlParameter>
             {
-                new MySqlParameter("USR_AIC", entrega.USR_AIC),
-                new MySqlParameter("ETG_DEST", entrega.Destino),
-                new MySqlParameter("ETG_SATUS", entrega.Status_ETG),
-                new MySqlParameter("CRG_AIC", entrega.CRG_AIC)
+                new MySqlParameter("@USR_AIC", entrega.USR_AIC),
+                new MySqlParameter("@ETG_DEST", entrega.Destino),
+                new MySqlParameter("@ETG_SATUS", entrega.Status_ETG),
+                new MySqlParameter("@CRG_AIC", entrega.CRG_AIC)
 
             };
 
@@ -38,10 +38,10 @@ namespace WebApplication1.Database
                            WHERE ETG_AIC = @ETG_AIC";
             var parametros = new List<MySqlParameter>
             {
-                new MySqlParameter("USR_AIC", entrega.USR_AIC),
-                new MySqlParameter("ETG_DEST", entrega.Destino),
-                new MySqlParameter("CRG_AIC", entrega.CRG_AIC),
-                new MySqlParameter("ETG_AIC", id)
+                new MySqlParameter("@USR_AIC", entrega.USR_AIC),
+                new MySqlParameter("@ETG_DEST", entrega.Destino),
+                new MySqlParameter("@CRG_AIC", entrega.CRG_AIC),
+                new MySqlParameter("@ETG_AIC", id)
             };
 
             return SQLDB.Executar(sql, parametros) > 0;
