@@ -18,16 +18,13 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Login", "Home");
             }
 
-            // Busca a entrega pelo código (ETG_AIC)
             var entrega = EntregaUserDB.Lista().FirstOrDefault(e => e.Codigo == id);
             if (entrega != null)
             {
                 entrega.Status_ETG = status;
 
-                // Atualiza no banco com data/hora atuais
                 var ok = EntregaUserDB.AtualizarStatus(entrega, id);
 
-                // Feedback opcional
                 TempData["Msg"] = ok ? "Status atualizado com sucesso!" : "Falha ao atualizar status.";
             }
 
@@ -44,7 +41,6 @@ namespace WebApplication1.Controllers
 
             var lista = EntregaUserDB.Lista() ?? new List<EntregaUser>();
 
-            // Filtra entregas do usuário logado
             var entregasDoUsuario = lista.Where(e => e.USR_AIC == usuario.USR_AIC).ToList();
 
             ViewBag.Pendentes = entregasDoUsuario

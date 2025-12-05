@@ -9,7 +9,7 @@ namespace WebApplication1.Database
 {
     public class CargaController : Controller
     {
-        // GET: Carga
+       
         public ActionResult Cadastro()
         {
             return View();

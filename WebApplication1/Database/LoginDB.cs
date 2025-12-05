@@ -16,7 +16,7 @@ namespace WebApplication1.Database
     {
         public static Login ValidarLogin(string email, string senha)
         {
-            var query = @"SELECT USR_AIC, USR_EML, USR_PASS 
+            var query = @"SELECT USR_AIC, USR_EML, USR_PASS, USR_NM 
                           FROM usrk
                           WHERE USR_EML = @USR_EML
                           AND USR_PASS = @USR_PASS";
@@ -36,6 +36,7 @@ namespace WebApplication1.Database
 
             var user = new Login
             {
+                Nome = row["USR_NM"].ToString(),
                 USR_AIC = Convert.ToInt32(row["USR_AIC"]),
                 Senha = row["USR_PASS"].ToString(),
                 Usuario = row["USR_EML"].ToString(),

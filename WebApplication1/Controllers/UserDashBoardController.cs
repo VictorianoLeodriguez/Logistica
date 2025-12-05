@@ -8,7 +8,6 @@ namespace WebApplication1.Controllers
 {
     public class UserDashBoardController : Controller
     {
-        // GET: DashBoard
         public ActionResult Index2()
         {
             return View();

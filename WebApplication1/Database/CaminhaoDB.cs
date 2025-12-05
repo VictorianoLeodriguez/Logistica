@@ -8,7 +8,7 @@ namespace WebApplication1.Database
 {
     public class CaminhaoDB
     {
-        // LISTAR CAMINHÕES
+       
         public static List<Caminhao> Listar()
         {
             string sql = @"SELECT CMHO_AIC, CMHO_PLA, CMHO_MDL FROM cmho";
@@ -32,7 +32,7 @@ namespace WebApplication1.Database
             return lista;
         }
 
-        // ADICIONAR
+     
         public static bool Adicionar(Caminhao cam)
         {
             string sql = @"INSERT INTO cmho (CMHO_PLA, CMHO_MDL, USR_AIC)
@@ -49,7 +49,7 @@ namespace WebApplication1.Database
         }
 
 
-        // EXCLUIR
+        
         public static bool Excluir(int id)
         {
             string sql = @"DELETE FROM cmho WHERE CMHO_AIC = @ID";

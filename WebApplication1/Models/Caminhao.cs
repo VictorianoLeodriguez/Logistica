@@ -8,13 +8,13 @@ namespace WebApplication1.Models
 {
     public class Caminhao
     {
-        public int CMHO_AIC { get; set; }      // Código do caminhão
+        public int CMHO_AIC { get; set; }      
 
         [Required]
-        public string CMHO_PLA { get; set; }   // Placa
+        public string CMHO_PLA { get; set; }   
 
         [Required]
-        public string CMHO_MDL { get; set; }   // Modelo
+        public string CMHO_MDL { get; set; }   
 
         public int USR_AIC { get; set; }
     }

@@ -17,6 +17,7 @@ namespace WebApplication1.Models
         [Display(Name = "Senha")]
         public string Senha { get; set; }
         public string Role { get; set; }
+        public string Nome { get; set; }
 
         public int USR_AIC { get; set; }
         public string USR_EML { get; set; }
