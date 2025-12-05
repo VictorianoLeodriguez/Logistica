@@ -18,7 +18,7 @@ namespace WebApplication1.Database
             DataTable dt = SQLDB.Consultar(cmd);
 
             if (dt == null || dt.Rows.Count == 0)
-                return new List<EntregaUser>(); // nunca retorna null
+                return new List<EntregaUser>();
 
             var lista = new List<EntregaUser>();
 

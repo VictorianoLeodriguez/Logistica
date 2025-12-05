@@ -67,7 +67,7 @@ namespace WebApplication1.Database
             DataTable dt = SQLDB.Consultar(cmd);
 
             if (dt == null || dt.Rows.Count == 0)
-                return new List<Entregas>(); // nunca retorna null
+                return new List<Entregas>(); 
 
             var lista = new List<Entregas>();
 
@@ -78,7 +78,7 @@ namespace WebApplication1.Database
                     Codigo = Convert.ToInt32(r["ETG_AIC"]),
                     Motorista = r["USR_AIC"].ToString(),
                     Destino = r["ETG_DEST"].ToString(),
-                    Status_ETG = r["ETG_SATUS"].ToString(), // agora é string
+                    Status_ETG = r["ETG_SATUS"].ToString(),
                     Data_RG = Convert.ToDateTime(r["ETG_DTRGS"]),
                     Hora_RG = TimeSpan.TryParse(r["ETG_HRRGS"].ToString(), out var horaRg) ? horaRg : default,
                     CRG_AIC = Convert.ToInt32(r["CRG_AIC"])

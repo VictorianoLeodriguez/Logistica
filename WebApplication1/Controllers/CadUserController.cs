@@ -16,7 +16,6 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult Cadastro(Usuario usuario, int id = -1)
         {
-            // Validações antes de salvar
             if (!ValidadorUsuario.ValidarNome(usuario.Nome))
             {
                 ModelState.AddModelError("Nome", "Nome inválido (máx. 50 caracteres).");
@@ -32,13 +31,11 @@ namespace WebApplication1.Controllers
                 ModelState.AddModelError("Senha", "Senha inválida (máx. 8 caracteres, número e especial)");
             }
 
-            // Se houver erros, volta para a View com mensagens
             if (!ModelState.IsValid)
             {
                 return View(usuario);
             }
 
-            // Se passou nas validações, salva
             if (id < 0)
             {
                 UsuarioDB.Adicionar(usuario);
