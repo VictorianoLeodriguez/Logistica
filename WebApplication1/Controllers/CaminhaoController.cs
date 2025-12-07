@@ -13,13 +13,13 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult Cadastro()
         {
-            if (Session["BAALOG"] == null) 
+            if (Session["BAALOG"] == null) // Garante que só usuário logado veja
                 return RedirectToAction("Login", "Home");
 
             return View();
         }
 
-        
+        // POST: Caminhao/Cadastro
         [HttpPost]
         public ActionResult Cadastro(Caminhao caminhao)
         {
@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-       
+        // GET: Caminhao/Lista
         public ActionResult Lista()
         {
             if (Session["BAALOG"] == null)
@@ -43,7 +43,7 @@ namespace WebApplication1.Controllers
             return View(lista);
         }
 
-     
+        // GET: Caminhao/Excluir/5
         public ActionResult Excluir(int id)
         {
             if (Session["BAALOG"] == null)

@@ -35,12 +35,11 @@ namespace WebApplication1.Controllers
                 {
                     Usuario = usuarioDoBanco.USR_EML,
                     Role = usuarioDoBanco.Role,
-                    Nome = usuarioDoBanco.Nome,
-                    USR_AIC = usuarioDoBanco.USR_AIC 
+                    USR_AIC = usuarioDoBanco.USR_AIC // <-- aqui você salva o ID do usuário
                 };
 
                 Session["BAALOG"] = usuarioSessao;
-                
+                // Redireciona conforme o perfil
                 if (usuarioSessao.Role == "Admin")
                 {
                     return RedirectToAction("Index", "DashBoard");

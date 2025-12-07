@@ -22,7 +22,8 @@ namespace WebApplication1.Controllers
 
             var entrega = new Entregas
             {
-                Status_ETG = "Pendente" 
+                Status_ETG = "Pendente" // valor padrão
+            };
 
             return View(entrega);
         }
@@ -35,7 +36,7 @@ namespace WebApplication1.Controllers
 
             if (string.IsNullOrEmpty(entrega.Status_ETG))
             {
-                entrega.Status_ETG = "Pendente"; 
+                entrega.Status_ETG = "Pendente"; // fallback se vier vazio
             }
 
             if (!ModelState.IsValid)
